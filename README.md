@@ -13,6 +13,8 @@ NEURA is a cutting-edge LLM-powered agent framework that simulates autonomous re
 - 📊 **Rich CLI**: Beautiful command-line interface with progress tracking and formatted output
 - 🎯 **Task Planning**: Sophisticated planning capabilities for complex task decomposition
 - 📝 **Memory Management**: Persistent storage and retrieval of past interactions
+- 🐳 **Docker Support**: Easy deployment with Docker and Docker Compose
+- 🔄 **CI/CD Pipeline**: Automated testing, linting, and deployment
 
 ## 🏗️ Architecture
 
@@ -40,10 +42,13 @@ neura/
 
 ### Prerequisites
 
-- Python 3.10+
+- Python 3.9+
 - Poetry (for dependency management)
+- Docker and Docker Compose (optional)
 
 ### Installation
+
+#### Using Poetry
 
 1. Clone the repository:
 ```bash
@@ -65,6 +70,26 @@ poetry run playwright install
 ```bash
 cp .env.example .env
 # Edit .env with your configuration
+```
+
+#### Using Docker
+
+1. Build and run using Docker Compose:
+```bash
+# Development environment
+docker-compose up neura-dev
+
+# Production environment
+docker-compose up neura
+```
+
+2. Or build and run using Docker directly:
+```bash
+# Build the image
+docker build -t neura .
+
+# Run the container
+docker run -v $(pwd)/data:/app/data -v $(pwd)/.env:/app/.env neura
 ```
 
 ### Quick Start
@@ -91,6 +116,8 @@ Detailed documentation is available in the `docs/` directory:
 - [Agent Development Guide](docs/agent-development.md)
 - [Environment Integration](docs/environments.md)
 - [Memory Management](docs/memory.md)
+- [Docker Deployment](docs/docker.md)
+- [CI/CD Pipeline](docs/ci-cd.md)
 
 ## 🤝 Contributing
 
@@ -108,6 +135,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Playwright for web automation
 - Typer for CLI development
 - Rich for beautiful terminal output
+- Docker for containerization
+- GitHub Actions for CI/CD
 
 ## 📊 CLI Usage
 
@@ -129,6 +158,43 @@ neura memory
 # Clear all memories
 neura memory --clear
 ```
+
+## 🐳 Docker Usage
+
+### Development
+
+```bash
+# Start development environment
+docker-compose up neura-dev
+
+# Run specific command
+docker-compose run neura-dev run "Research quantum computing"
+```
+
+### Production
+
+```bash
+# Start production environment
+docker-compose up neura
+
+# Run specific command
+docker-compose run neura run "Research quantum computing"
+```
+
+## 🔄 CI/CD Pipeline
+
+The project includes automated CI/CD pipelines:
+
+1. **Continuous Integration**
+   - Automated testing
+   - Code linting
+   - Type checking
+   - Docker image building
+
+2. **Continuous Deployment**
+   - PyPI package publishing
+   - Docker image publishing
+   - GitHub releases
 
 ## 🐛 Bug Reports
 

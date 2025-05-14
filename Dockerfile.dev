@@ -1,0 +1,42 @@
+# Use Python 3.9 slim as base image
+FROM python:3.9-slim
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    curl \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install Poetry
+RUN curl -sSL https://install.python-poetry.org | python3 -
+
+# Copy poetry files
+COPY pyproject.toml poetry.lock ./
+
+# Configure poetry
+RUN poetry config virtualenvs.create false
+
+# Install dependencies including dev dependencies
+RUN poetry install --no-interaction --no-ansi
+
+# Install Playwright browsers
+RUN playwright install chromium
+RUN playwright install-deps
+
+# Copy project files
+COPY . .
+
+# Set environment variables
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+ENV ENVIRONMENT=development
+
+# Create data directory
+RUN mkdir -p /app/data
+
+# Set entrypoint
+ENTRYPOINT ["python", "-m", "neura.cli"] 

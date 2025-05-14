@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  neura:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./data:/app/data
+      - ./.env:/app/.env
+    environment:
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+    command: run "Research the latest developments in quantum computing"
+
+  neura-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app
+      - ./data:/app/data
+      - ./.env:/app/.env
+    environment:
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+      - ENVIRONMENT=development
+    command: run "Research the latest developments in quantum computing" 
