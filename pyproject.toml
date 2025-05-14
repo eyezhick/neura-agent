@@ -1,34 +1,28 @@
 [tool.poetry]
 name = "neura"
 version = "0.1.0"
-description = "Neural Entity for Understanding, Reasoning, and Autonomy - An LLM-powered agent framework"
+description = "NEURA - Neural Entity for Understanding, Reasoning, and Autonomy"
 authors = ["Your Name <your.email@example.com>"]
 readme = "README.md"
 packages = [{include = "neura"}]
 
 [tool.poetry.dependencies]
-python = "^3.10"
-langgraph = "^0.0.15"
+python = "^3.9"
 langchain = "^0.1.0"
-langchain-openai = "^0.0.2"
-pydantic = "^2.5.2"
-pydantic-settings = "^2.1.0"
-chromadb = "^0.4.18"
-fastapi = "^0.104.1"
-uvicorn = "^0.24.0"
-python-dotenv = "^1.0.0"
-httpx = "^0.25.1"
-beautifulsoup4 = "^4.12.2"
-playwright = "^1.40.0"
+langgraph = "^0.0.15"
+openai = "^1.12.0"
+chromadb = "^0.4.22"
+beautifulsoup4 = "^4.12.3"
+playwright = "^1.41.2"
+typer = {extras = ["all"], version = "^0.9.0"}
 rich = "^13.7.0"
-typer = "^0.9.0"
 
 [tool.poetry.group.dev.dependencies]
-pytest = "^7.4.3"
-black = "^23.11.0"
-isort = "^5.12.0"
-mypy = "^1.7.1"
-ruff = "^0.1.6"
+pytest = "^7.4.0"
+black = "^24.1.1"
+isort = "^5.13.2"
+mypy = "^1.8.0"
+pylint = "^3.0.3"
 
 [build-system]
 requires = ["poetry-core"]
@@ -36,7 +30,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 line-length = 88
-target-version = ['py310']
+target-version = ['py39']
 include = '\.pyi?$'
 
 [tool.isort]
@@ -44,7 +38,7 @@ profile = "black"
 multi_line_output = 3
 
 [tool.mypy]
-python_version = "3.10"
+python_version = "3.9"
 warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = true
@@ -52,6 +46,6 @@ disallow_incomplete_defs = true
 
 [tool.ruff]
 line-length = 88
-target-version = "py310"
+target-version = "py39"
 select = ["E", "F", "B", "I"]
 ignore = [] 

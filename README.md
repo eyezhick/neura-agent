@@ -10,6 +10,9 @@ NEURA is a cutting-edge LLM-powered agent framework that simulates autonomous re
 - 📚 **Memory Management**: Vector DB and file-based memory for long-term learning
 - 🔌 **Extensible Environment Support**: Operate in local, cloud, or hybrid environments
 - 🤝 **Multi-Agent Coordination**: Support for agent composition and collaboration
+- 📊 **Rich CLI**: Beautiful command-line interface with progress tracking and formatted output
+- 🎯 **Task Planning**: Sophisticated planning capabilities for complex task decomposition
+- 📝 **Memory Management**: Persistent storage and retrieval of past interactions
 
 ## 🏗️ Architecture
 
@@ -53,7 +56,12 @@ cd neura
 poetry install
 ```
 
-3. Set up environment variables:
+3. Install Playwright browsers:
+```bash
+poetry run playwright install
+```
+
+4. Set up environment variables:
 ```bash
 cp .env.example .env
 # Edit .env with your configuration
@@ -97,3 +105,31 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - LangGraph for the powerful agent workflow framework
 - LangChain for the excellent LLM integration tools
 - The open-source AI community for inspiration and support
+- Playwright for web automation
+- Typer for CLI development
+- Rich for beautiful terminal output
+
+## 📊 CLI Usage
+
+NEURA provides a powerful CLI for executing tasks and managing memory:
+
+```bash
+# Execute a task
+neura run "Research the latest developments in quantum computing"
+
+# Execute with custom parameters
+neura run "Analyze the impact of AI on healthcare" --model gpt-4 --temperature 0.8 --max-steps 10
+
+# Search memories
+neura memory --query "quantum computing"
+
+# View memory statistics
+neura memory
+
+# Clear all memories
+neura memory --clear
+```
+
+## 🐛 Bug Reports
+
+If you encounter any bugs or issues, please report them by opening an issue on the GitHub repository.
